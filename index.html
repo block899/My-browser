@@ -8,11 +8,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            /* High-quality blurred city background to match the image */
+            /* High-quality blurred city background */
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                         url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1000') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,4 +24,88 @@
         .search-wrapper {
             margin-top: 15vh;
             width: 85%;
-            max-width:
+            max-width: 420px;
+            background: #ffffff;
+            height: 65px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px 0 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            background: transparent;
+        }
+
+        .go-btn {
+            background: #E67E22; /* Orange action button */
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The Blue Divider */
+        .divider-container {
+            width: 80%;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .divider-line {
+            height: 2px;
+            background: #00d2ff;
+            box-shadow: 0 0 15px #00d2ff;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .label {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-wrapper">
+        <input type="text" id="urlInput" placeholder="SEARCH">
+        <button class="go-btn" onclick="launch()">»</button>
+    </div>
+
+    <div class="divider-container">
+        <div class="divider-line"></div>
+        <div class="label">Quick Links</div>
+    </div>
+
+    <script>
+        function launch() {
+            let val = document.getElementById('urlInput').value;
+            if (val.toLowerCase() === '70k') {
+                document.body.style.background = "black";
+                document.body.innerHTML = '<div style="color:#00d2ff; word-break:break-all; padding:20px;">' + '0'.repeat(70000) + '</div>';
+            } else if (val) {
+                if (!val.startsWith('http')) val = 'https://' + val;
+                window.location.href = val;
+            }
+        }
+    </script>
+</body>
+</html>
