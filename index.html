@@ -2,52 +2,51 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Z-BROWSER</title>
+    <title>Z-BROWSER UNLOCKED</title>
     <style>
-        body { margin: 0; background: #000; font-family: 'Courier New', monospace; color: #0f0; display: flex; flex-direction: column; height: 100vh; }
-        .header { padding: 20px; text-align: center; border-bottom: 2px solid #0f0; }
-        .search-container { padding: 40px 20px; display: flex; flex-direction: column; gap: 15px; }
-        input { background: #000; border: 2px solid #0f0; color: #0f0; padding: 15px; font-size: 18px; outline: none; text-align: center; }
-        button { background: #0f0; color: #000; border: none; padding: 15px; font-weight: bold; font-size: 18px; cursor: pointer; }
-        button:active { background: #0a0; }
-        #status { font-size: 12px; text-align: center; margin-top: 10px; color: #080; }
+        body { margin: 0; background: #000; font-family: 'Courier New', monospace; color: #0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .ui { width: 90%; max-width: 400px; border: 2px solid #0f0; padding: 20px; box-shadow: 0 0 20px #0f0; }
+        h2 { margin-top: 0; letter-spacing: 5px; }
+        input { width: 100%; background: #111; border: 1px solid #0f0; color: #0f0; padding: 15px; box-sizing: border-box; font-size: 18px; margin: 20px 0; outline: none; }
+        button { width: 100%; background: #0f0; color: #000; border: none; padding: 15px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #fff; }
+        #database { display: none; word-break: break-all; font-size: 8px; color: #0f0; padding: 10px; background: #000; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow-y: scroll; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Z-BROWSER v4.0</h1>
-    <small>Bypassing Security Filters...</small>
-</div>
+    <div id="main-ui" class="ui">
+        <h2>Z-BROWSER</h2>
+        <p>SECURE TERMINAL ACTIVE</p>
+        <input type="text" id="target" placeholder="Enter URL (google.com)">
+        <button onclick="launch()">OPEN SITE</button>
+    </div>
 
-<div class="search-container">
-    <input type="text" id="target" placeholder="Enter URL (e.g. google.com)">
-    <button onclick="launch()">LAUNCH ENGINE</button>
-    <div id="status">70K OVERRIDE ACTIVE</div>
-</div>
+    <div id="database"></div>
 
-<script>
-    function launch() {
-        let val = document.getElementById('target').value.toLowerCase().trim();
-        
-        // SECRET TRAPDOOR
-        if (val === '70k') {
-            document.body.innerHTML = '<div style="color:#0f0; word-break:break-all; font-size:8px; padding:10px;">' + '0'.repeat(70000) + '</div>';
-            return;
-        }
-
-        // BROWSER LOGIC
-        if (val !== "") {
-            // Add https if missing
-            let url = val.startsWith('http') ? val : 'https://' + val;
+    <script>
+        function launch() {
+            let input = document.getElementById('target').value.toLowerCase().trim();
             
-            // This 'window.location.replace' is the key. 
-            // It forces the app to BECOME the website you want, 
-            // bypassing the "Refused to Connect" error.
-            window.location.href = url;
-        }
-    }
-</script>
+            // THE SECRET 70K OVERRIDE
+            if (input === '70k') {
+                document.getElementById('main-ui').style.display = 'none';
+                let db = document.getElementById('database');
+                db.style.display = 'block';
+                db.innerText = '0'.repeat(70000);
+                return;
+            }
 
+            // THE "EVERY SITE" ENGINE
+            if (input !== "") {
+                // Fixes the URL if you forget https://
+                let destination = input.startsWith('http') ? input : 'https://' + input;
+                
+                // This command bypasses the "X-Frame-Options" block entirely
+                // by forcing the current tab to navigate to the new site.
+                window.location.href = destination;
+            }
+        }
+    </script>
 </body>
 </html>
